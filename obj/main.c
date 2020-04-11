@@ -13,6 +13,7 @@
 
 int main(void)
 {
+	
 	//1.System Initialization
 	if(DEV_ModuleInit())
 		exit(0);
@@ -22,7 +23,7 @@ int main(void)
 	LCD_SCAN_DIR LCD_ScanDir = SCAN_DIR_DFT;//SCAN_DIR_DFT = D2U_L2R
 	LCD_Init(LCD_ScanDir );	
 	
-	printf("show bmp\r\n");
+	//printf("show bmp\r\n");
 	LCD_ShowBmp(0);
 	DEV_Delay_ms(5000);
 	
@@ -33,10 +34,13 @@ int main(void)
 		DEV_Delay_ms(500);
 	}
 	LCD_ShowBmp(0);
-    /*
-    KEY_Listen();
+	DEV_Delay_ms(2000);        
+	
+
+        KEY_Listen();
 	//3.System Exit
 	DEV_ModuleExit();
-	*/
+	
 	return 0;
 }
+

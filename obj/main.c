@@ -22,20 +22,21 @@ int main(void)
 	LCD_SCAN_DIR LCD_ScanDir = SCAN_DIR_DFT;//SCAN_DIR_DFT = D2U_L2R
 	LCD_Init(LCD_ScanDir );	
 	
-    
-    /*
-	printf("LCD Show \r\n");
-	GUI_Show();
-	DEV_Delay_ms(1000);
-	*/
 	printf("show bmp\r\n");
-	LCD_ShowBmp();
-	DEV_Delay_ms(1000);
+	LCD_ShowBmp(0);
+	DEV_Delay_ms(5000);
+	
+	for(int i = 0;i<15;i++){
+		LCD_ShowBmp(1);
+		DEV_Delay_ms(500);
+		LCD_ShowBmp(2);
+		DEV_Delay_ms(500);
+	}
+	LCD_ShowBmp(0);
     /*
     KEY_Listen();
 	//3.System Exit
 	DEV_ModuleExit();
-	return 0;
 	*/
-	
+	return 0;
 }

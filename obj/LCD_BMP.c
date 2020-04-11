@@ -7,25 +7,38 @@
 #include <stdlib.h>	//memset
 extern LCD_DIS sLCD_DIS;
 
-uint8_t LCD_ShowBmp(void)
+uint8_t LCD_ShowBmp(int img)
 {
     FILE *fp;                     //Define a file pointer 
     BMPFILEHEADER bmpFileHeader;  //Define a bmp file header structure
     BMPINF bmpInfoHeader;         //Define a bmp bitmap header structure 
 
     //Binary file open
-    if((fp = fopen("./pic/time.bmp", "rb")) == NULL) { // fp = 0x00426aa0
-        printf("Cann't open the file!\n");
-        return 0;
+    if(img == 0){
+        if((fp = fopen("/boot/1.44inch-LCD-HAT-Code/RaspberryPi/c/pic/0.bmp", "rb")) == NULL) { // fp = 0x00426aa0
+            printf("Cann't open the file!\n");
+            return 0;
+        }
     }
-
+    if(img == 1){
+        if((fp = fopen("/boot/1.44inch-LCD-HAT-Code/RaspberryPi/c/pic/1.bmp", "rb")) == NULL) { // fp = 0x00426aa0
+            printf("Cann't open the file!\n");
+            return 0;
+        }
+    }
+    if(img == 2){
+        if((fp = fopen("/boot/1.44inch-LCD-HAT-Code/RaspberryPi/c/pic/2.bmp", "rb")) == NULL) { // fp = 0x00426aa0
+            printf("Cann't open the file!\n");
+            return 0;
+        }
+    }
     //Set the file pointer from the beginning
     fseek(fp, 0, SEEK_SET);                            // fp = 0x00426aa0
     fread(&bmpFileHeader, sizeof(BMPFILEHEADER), 1, fp);//	sizeof(BMPFILEHEADER) must be 14,
 	fread(&bmpInfoHeader, sizeof(BMPINF), 1, fp);
     //printf("sizeof(BMPFILEHEADER) = %d\n", sizeof(BMPFILEHEADER));
     //printf("sizeof(bmpInfoHeader) = %d\n", sizeof(bmpInfoHeader));
-
+/*
     //file header information
 	printf("********************************************************\r\n" );
     printf("file header information:\n"                                   );
@@ -48,7 +61,7 @@ uint8_t LCD_ShowBmp(void)
     printf(" YPPM             : %ld  \r\n" , bmpInfoHeader.bYPelsPerMeter );
     printf(" CCT              : %ld  \r\n" , bmpInfoHeader.bClrUsed       );
     printf(" ICC              : %ld  \r\n" , bmpInfoHeader.bClrImportant  );
-    
+*/    
 	int row, col;
     short data;
 	RGBQUAD rgb;

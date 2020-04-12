@@ -37,10 +37,10 @@ int main(void)
 	DEV_Delay_ms(2000);        
 	
 
-        KEY_Listen();
+        //KEY_Listen();
 	//3.System Exit
-	DEV_ModuleExit();
-	
+	//DEV_ModuleExit();
+	system("python /boot/led-hat/code/python/menu.py");
 	return 0;
 }
 

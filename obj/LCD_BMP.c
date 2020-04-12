@@ -15,19 +15,19 @@ uint8_t LCD_ShowBmp(int img)
 
     //Binary file open
     if(img == 0){
-        if((fp = fopen("/boot/1.44inch-LCD-HAT-Code/RaspberryPi/c/pic/0.bmp", "rb")) == NULL) { // fp = 0x00426aa0
+        if((fp = fopen("/boot/led-hat/code/pic/0.bmp", "rb")) == NULL) { // fp = 0x00426aa0
             printf("Cann't open the file!\n");
             return 0;
         }
     }
     if(img == 1){
-        if((fp = fopen("/boot/1.44inch-LCD-HAT-Code/RaspberryPi/c/pic/1.bmp", "rb")) == NULL) { // fp = 0x00426aa0
+        if((fp = fopen("/boot/led-hat/code/pic/1.bmp", "rb")) == NULL) { // fp = 0x00426aa0
             printf("Cann't open the file!\n");
             return 0;
         }
     }
     if(img == 2){
-        if((fp = fopen("/boot/1.44inch-LCD-HAT-Code/RaspberryPi/c/pic/2.bmp", "rb")) == NULL) { // fp = 0x00426aa0
+        if((fp = fopen("/boot/led-hat/code/pic/2.bmp", "rb")) == NULL) { // fp = 0x00426aa0
             printf("Cann't open the file!\n");
             return 0;
         }

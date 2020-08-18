@@ -35,7 +35,7 @@ width = 128; height = 128; image = Image.new('RGB', (width, height));
 # Get drawing object to draw on image.
 draw = ImageDraw.Draw(image)
 # Draw a black filled box to clear the image.
-<<<<<<< HEAD
+
 draw.rectangle((0,0,width,height), outline=0, fill=0) 
 draw.text((15, 10), 'Video Games', fill = "GREEN") 
 draw.text((15, 20), 'Apps & tools', fill = "GREEN") 

@@ -6,5 +6,5 @@ Installation:
   . make  
 
 DOC:  
-  .  /boot/led-hat  
+  .  /boot/led-hat/code/python  
   .  172.16.0.1

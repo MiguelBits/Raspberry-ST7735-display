@@ -5,5 +5,6 @@ Installation:
   . make clean  
   . make  
 
-DOC:
-  . /boot/led-hat
+DOC:  
+  .  /boot/led-hat  
+  .  172.16.0.1

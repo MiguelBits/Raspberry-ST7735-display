@@ -35,6 +35,7 @@ width = 128; height = 128; image = Image.new('RGB', (width, height));
 # Get drawing object to draw on image.
 draw = ImageDraw.Draw(image)
 # Draw a black filled box to clear the image.
+<<<<<<< HEAD
 draw.rectangle((0,0,width,height), outline=0, fill=0) 
 draw.text((15, 10), 'Video Games', fill = "GREEN") 
 draw.text((15, 20), 'Apps & tools', fill = "GREEN") 
@@ -65,3 +66,36 @@ while 1:
 	else: 
 		draw.text((15, 20), 'Apps & tools', fill = "BLUE") 
 	disp.LCD_ShowImage(image,0,0)	
+=======
+draw.rectangle((0,0,width,height), outline=0, fill=0)
+
+draw.text((15, 10), 'Video Games', fill = "GREEN")
+draw.text((15, 20), 'Apps & tools', fill = "GREEN")
+disp.LCD_ShowImage(image,0,0)
+i = 0
+c = 0
+
+while 1:
+        draw.text((50, 50), str(c), fill = "GREEN")
+
+        if GPIO.input(KEY_RIGHT_PIN) == 0:
+                c += 11
+
+        if i <= 0 :
+                i = 1
+        if i > 2 :
+                i = 2
+        if GPIO.input(KEY_UP_PIN) == 0:
+                i -= 1
+        if GPIO.input(KEY_DOWN_PIN) == 0:
+                i += 1
+        if i == 1: # button is released
+                draw.text((15, 10), 'Video Games', fill = "GREEN")
+        else:
+                draw.text((15, 10), 'Video Games', fill = "BLUE")
+        if i == 2:
+                draw.text((15, 20), 'Apps & tools', fill = "GREEN")
+        else:
+                draw.text((15, 20), 'Apps & tools', fill = "BLUE")
+        disp.LCD_ShowImage(image,0,0)
+>>>>>>> 70c31e351b764085554467279c81f2ac6c5fd8ea

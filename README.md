@@ -4,3 +4,7 @@ Installation:
   . these libraries: https://www.waveshare.com/wiki/Libraries_Installation_for_RPi  
   . make clean  
   . make  
+
+DOC:  
+  .  /boot/led-hat  
+  .  172.16.0.1

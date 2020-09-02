@@ -107,8 +107,10 @@ def open_menu(arr,image,disp):
         #Draw time background
         draw.rectangle((128,128,69,118),outline = "WHITE",fill="WHITE")
 
-        draw.text((15, 10), str(arr[0]), fill = "WHITE")
-        draw.text((15, 20), str(arr[1]), fill = "WHITE")
+        #Draw all files
+        for a in range(len(arr)):
+                draw.text((15, 10*a+10), str(arr[a])[:-3], fill = "WHITE")
+
         disp.LCD_ShowImage(image,0,0)
 
         i = 0

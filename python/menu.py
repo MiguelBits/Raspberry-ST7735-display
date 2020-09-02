@@ -35,7 +35,7 @@ def time_white():
         draw.text((80, 118), "00:00:00", fill = "WHITE")
 
 
-def folder_open(what):
+def open_folder(what):
         mypath =  "/boot/led-hat/code/menus/%s"%(what)
         onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
 
@@ -98,7 +98,7 @@ def main_menu(disp,image):
 
                 disp.LCD_ShowImage(image,0,0)
 
-def open_menu(arr,image,disp):
+def open_menu(arr,disp,image):
 
         global draw
         # Draw a black filled box to clear the image.
@@ -114,6 +114,7 @@ def open_menu(arr,image,disp):
         disp.LCD_ShowImage(image,0,0)
 
         i = 0
+        end_i = len(arr)
 
         while 1:
 
@@ -123,8 +124,33 @@ def open_menu(arr,image,disp):
                 current_time = now.strftime("%H:%M:%S")
                 draw.text((80, 118), str(current_time), fill = "RED")
 
+                #Keys Input
+                if i < 0 :
+                        i = 0
+                if i > end_i :
+                        i = end_i
+                if GPIO.input(KEY_UP_PIN) == 0:
+                        i -= 1
+                if GPIO.input(KEY_DOWN_PIN) == 0:
+                        i += 1
+                if GPIO.input(KEY_RIGHT_PIN) == 0:
+                        return execute_script(str(arr[i]))
+                if GPIO.input(KEY_LEFT_PIN) == 0:
+                        return main_menu(disp,image)
+
+                #Draw red if selected
+                for a in range(len(arr)):
+                        if i == a:
+                                draw.text((15, 10*a+10), str(arr[a])[:-3], fill = "RED")
+                        else:
+                                draw.text((15, 10*a+10), str(arr[a])[:-3], fill = "WHITE")
+
+
 
                 disp.LCD_ShowImage(image,0,0)
+
+def execute_script(what):
+        print what
 
 
 #MAIN CODE
@@ -138,8 +164,8 @@ i = main_menu(disp,image)
 time.sleep(1)
 disp.LCD_Clear()
 if i == 1:
-        arr = folder_open("videogames")
-        open_menu(arr,image,disp)
+        arr = open_folder("videogames")
+        open_menu(arr,disp,image)
 if i == 2:
-        arr = folder_open("appstools")
-        open_menu(arr,image,disp)
+        arr = open_folder("appstools")
+        open_menu(arr,disp,image)
